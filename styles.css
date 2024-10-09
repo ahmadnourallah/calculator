@@ -10,11 +10,22 @@ body {
 }
 
 #cal-container {
+    margin-top: 10px;
     background-color: #AAAAAA;
     display: flex;
-    flex-direction: container;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 564px;
+    padding: 20px;
+    border: 2px solid #333333;
+    border-radius: 15px;
+}
+
+#cal-container #display {
     width: 356px;
-    height: 520px;
-    border: 2px solid #000000;
-    border-radius: 20px;
+    height: 120px;
+    background-color: #EEEEEE;
+    border: 2px solid #333333;
+    border-radius: 5px;
 }
