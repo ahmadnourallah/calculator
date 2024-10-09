@@ -1,4 +1,4 @@
-let operand1, operand2, operator;
+let oper1, oper2, operation;
 const displayPrevOperand = document.querySelector("#prev-operand");
 const displayCurrentOperand = document.querySelector("#current-operand");
 
