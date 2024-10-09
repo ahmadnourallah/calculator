@@ -7,6 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: sans-serif;
 }
 
 #cal-container {
@@ -25,7 +26,21 @@ body {
 #cal-container #display {
     width: 356px;
     height: 120px;
+    padding: 20px;
     background-color: #EEEEEE;
     border: 2px solid #333333;
     border-radius: 5px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#cal-container #display #prev-operand {
+    font-size: 20px;
+}
+
+#cal-container #display #current-operand {
+    font-size: 45px;
+    font-weight: 500;   
 }
