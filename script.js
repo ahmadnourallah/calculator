@@ -39,3 +39,7 @@ document.querySelectorAll(".number-btn").forEach(btn => {
         displayCurrentOperand.textContent += event.target.dataset.value;
     });
 });
+
+document.querySelector("#delete-btn").addEventListener("click", event => {
+    displayCurrentOperand.textContent = displayCurrentOperand.textContent.slice(0, -1);
+})
