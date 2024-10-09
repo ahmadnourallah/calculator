@@ -36,7 +36,10 @@ function operator(operand1, operand2, operator) {
 
 document.querySelectorAll(".number-btn").forEach(btn => {
     btn.addEventListener("click", (event) => {
-        displayCurrentOperand.textContent += event.target.dataset.value;
+        if (!(event.target.dataset.value === "." && displayCurrentOperand.textContent.includes("."))) {
+            displayCurrentOperand.textContent += event.target.dataset.value;
+
+        }
     });
 });
 
