@@ -19,6 +19,18 @@ button:hover {
     filter: brightness(0.9);
 }
 
+.deep-border, .light-border {
+    border: 2px solid #333333;
+}
+
+.deep-border {
+    border-radius: 15px;
+}
+
+.light-border {
+    border-radius: 5px;
+}
+
 #cal-container {
     margin-top: 10px;
     background-color: #AAAAAA;
@@ -28,8 +40,6 @@ button:hover {
     width: 400px;
     height: 564px;
     padding: 20px;
-    border: 2px solid #333333;
-    border-radius: 15px;
     gap: 18px;
 }
 
@@ -38,8 +48,6 @@ button:hover {
     height: 120px;
     padding: 20px;
     background-color: #EEEEEE;
-    border: 2px solid #333333;
-    border-radius: 5px;
     text-align: right;
     display: flex;
     flex-direction: column;
@@ -64,8 +72,6 @@ button:hover {
 #cal-container #control button {
     width: 100%;
     height: 68px;
-    border: 2px solid #333333;
-    border-radius: 5px;
     font-size: 20px;
     color: #333333;
 }
