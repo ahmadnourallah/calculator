@@ -83,3 +83,22 @@ button:hover {
 #cal-container #control #delete-btn {
     background-color: #AAAAFF;
 }
+
+#cal-container #keys {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+#cal-container #keys > div {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#cal-container #keys button {
+    width: 81px;
+    height: 68px;
+    font-size: 18px;
+}
