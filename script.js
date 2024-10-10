@@ -1,6 +1,6 @@
-let oper1, oper2, operator;
-const displayPrevOperand = document.querySelector("#prev-operator");
-const displayCurrentOperand = document.querySelector("#current-operator");
+let operator1, operator2, operator;
+const displayPrevOperand = document.querySelector("#prev-operand");
+const displayCurrentOperand = document.querySelector("#current-operand");
 
 function add(oper1, oper2) {
     return oper1 + oper2;
@@ -18,7 +18,7 @@ function divide(oper1, oper2) {
     return oper1 / oper2;
 }
 
-function operator(oper1, oper2, operation) {
+function operate(oper1, oper2, operation) {
     if (operation === "add") {
         return add(oper1, oper2);
     
