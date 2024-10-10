@@ -40,35 +40,32 @@ document.querySelector("#keys").addEventListener("click", event => {
         // Remove temporary numbers whenever a new number is entered
         if (displayCurrentOperand.textContent === "0" || displayCurrentOperand.classList.contains("temp")) {
             displayCurrentOperand.textContent = "";
-            displayCurrentOperand.classList.toggle("temp");
+            displayCurrentOperand.classList.remove("temp");
         }
         
         displayCurrentOperand.textContent += event.target.textContent;
         
     } else if (event.target.dataset.type === "operator") {
-        // Don't perform the same operation on a temporary number
-        if (!displayCurrentOperand.classList.contains("temp")) {
-            if (Number(displayPrevOperand.textContent)) {
-                let result = operate(Number(displayPrevOperand.textContent), Number(displayCurrentOperand.textContent), event.target.dataset.operation);
-                displayCurrentOperand.textContent = result;
-                displayPrevOperand.textContent = result;
-                displayCurrentOperand.classList.toggle("temp");
-            
-            // If no previous operand, make the current one (or a zero in case of temporary zero)  
-            } else {
-                displayPrevOperand.textContent = displayCurrentOperand.textContent || 0;
-                displayCurrentOperand.textContent = displayCurrentOperand.textContent || 0;
-                displayCurrentOperand.classList.toggle("temp");
-            }
+        // Check if there is a previous operand and don't perform the same operation
+        // on a temporary number
+        if (Number(displayPrevOperand.textContent) && !displayCurrentOperand.classList.contains("temp")) {
+            let result = operate(Number(displayPrevOperand.textContent), Number(displayCurrentOperand.textContent), event.target.dataset.operation);
+            displayCurrentOperand.textContent = result;
+            displayPrevOperand.textContent = result;
         
-        } 
-
+        // If no previous operand, make the current one (or a zero in case of temporary zero)  
+        } else {
+            displayPrevOperand.textContent = displayCurrentOperand.textContent || 0;
+            displayCurrentOperand.textContent = displayCurrentOperand.textContent || 0;
+        }
+        
+        displayCurrentOperand.classList.add("temp");
         displayOperator.textContent = event.target.textContent;
         displayOperator.dataset.operation = event.target.dataset.operation;
         
     } else if (event.target.dataset.type === "equal" && Number(displayCurrentOperand.textContent) && Number(displayPrevOperand.textContent) && displayOperator.textContent !== "" && !displayCurrentOperand.classList.contains("temp")) {        
         displayCurrentOperand.textContent = operate(Number(displayPrevOperand.textContent), Number(displayCurrentOperand.textContent), displayOperator.dataset.operation);
-        displayCurrentOperand.classList.toggle("temp");
+        displayCurrentOperand.classList.add("temp");
         displayPrevOperand.textContent = "";
         displayOperator.textContent = "";        
     } 
