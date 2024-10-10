@@ -45,27 +45,31 @@ document.querySelector("#keys").addEventListener("click", event => {
         displayCurrentOperand.textContent += event.target.textContent;
         
     } else if (event.target.dataset.type === "operator") {
-        if (Number(displayPrevOperand.textContent)) {
-            let result = operate(Number(displayPrevOperand.textContent), Number(displayCurrentOperand.textContent), event.target.dataset.operation);
-            displayCurrentOperand.textContent = result;
-            displayPrevOperand.textContent = result;
-            displayCurrentOperand.classList.toggle("temp");
+        if (!displayCurrentOperand.classList.contains("temp")) {
+            if (Number(displayPrevOperand.textContent)) {
+                let result = operate(Number(displayPrevOperand.textContent), Number(displayCurrentOperand.textContent), event.target.dataset.operation);
+                displayCurrentOperand.textContent = result;
+                displayPrevOperand.textContent = result;
+                displayCurrentOperand.classList.toggle("temp");
+            
+            } else {
+                displayPrevOperand.textContent = displayCurrentOperand.textContent || 0;
+                displayCurrentOperand.textContent = displayCurrentOperand.textContent || 0;
+                displayCurrentOperand.classList.toggle("temp");
+            }
         
-        } else {
-            displayPrevOperand.textContent = displayCurrentOperand.textContent || 0;
-            displayCurrentOperand.textContent = displayCurrentOperand.textContent || 0;
-            displayCurrentOperand.classList.toggle("temp");
-        }
+        } 
 
         displayOperator.textContent = event.target.textContent;
         displayOperator.dataset.operation = event.target.dataset.operation;
-    
+        
     } else if (event.target.dataset.type === "equal" && Number(displayCurrentOperand.textContent) && Number(displayPrevOperand.textContent) && displayOperator.textContent !== "" && !displayCurrentOperand.classList.contains("temp")) {        
         displayCurrentOperand.textContent = operate(Number(displayPrevOperand.textContent), Number(displayCurrentOperand.textContent), displayOperator.dataset.operation);
         displayCurrentOperand.classList.toggle("temp");
         displayPrevOperand.textContent = "";
         displayOperator.textContent = "";        
     } 
+    
 });
 
 document.querySelector("#delete-btn").addEventListener("click", event => {
