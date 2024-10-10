@@ -73,6 +73,7 @@ document.querySelector("#delete-btn").addEventListener("click", event => {
 
 document.querySelector("#clear-btn").addEventListener("click", () => {
     displayOperator.textContent = "";
+    delete displayOperator.dataset.operation;
     displayPrevOperand.textContent = "";
     displayCurrentOperand.textContent = "0";
     displayCurrentOperand.classList.add("temp");
