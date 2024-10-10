@@ -1,3 +1,4 @@
+const allowedKeys = "123456789+-/*=.";
 const displayPrevOperand = document.querySelector("#prev-operand");
 const displayCurrentOperand = document.querySelector("#current-operand");
 const displayOperator = document.querySelector("#operator");
@@ -77,4 +78,15 @@ document.querySelector("#clear-btn").addEventListener("click", () => {
     displayPrevOperand.textContent = "";
     displayCurrentOperand.textContent = "0";
     displayCurrentOperand.classList.add("temp");
+});
+
+document.addEventListener("keypress", event => {
+    if (allowedKeys.includes(event.key)) {
+        document.querySelectorAll(".key").forEach(key => {
+            if (key.textContent === event.key) {
+                let clickEvent = new Event('click', { bubbles: true });
+                key.dispatchEvent(clickEvent);
+            }
+        });        
+    }
 });
