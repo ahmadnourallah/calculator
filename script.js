@@ -20,19 +20,23 @@ function divide(oper1, oper2) {
 }
 
 function operate(oper1, oper2, operation) {
+    let result;
+
     if (operation === "add") {
-        return add(oper1, oper2);
+        result = add(oper1, oper2);
     
     } else if (operation === "subtract") {
-        return subtract(oper1, oper2);
+        result = subtract(oper1, oper2);
     
     } else if (operation === "multiply") {
-        return multiply(oper1, oper2);
+        result = multiply(oper1, oper2);
 
     } else if (operation === "divide") {
-        return divide(oper1, oper2);
+        result = divide(oper1, oper2);
 
     }
+
+    return result % 1 === 0 ? result : result.toFixed(3);
 }
 
 document.querySelector("#keys").addEventListener("click", event => {
