@@ -57,6 +57,7 @@ document.querySelector("#keys").addEventListener("click", event => {
         }
 
         displayOperator.textContent = event.target.textContent;
+        displayOperator.dataset.operation = event.target.dataset.operation;
     }
 });
 
