@@ -32,11 +32,11 @@ function operate(oper1, oper2, operation) {
         result = multiply(oper1, oper2);
 
     } else if (operation === "divide") {
-        result = divide(oper1, oper2);
+        result = oper2 === 0 ? "ERROR" : divide(oper1, oper2);
 
     }
 
-    return result % 1 === 0 ? result : result.toFixed(3);
+    return result % 1 === 0 || typeof result === "string" ? result : result.toFixed(3);
 }
 
 document.querySelector("#keys").addEventListener("click", event => {
@@ -67,7 +67,7 @@ document.querySelector("#keys").addEventListener("click", event => {
         displayOperator.textContent = event.target.textContent;
         displayOperator.dataset.operation = event.target.dataset.operation;
         
-    } else if (event.target.dataset.type === "equal" && Number(displayCurrentOperand.textContent) && Number(displayPrevOperand.textContent) && displayOperator.textContent !== "" && !displayCurrentOperand.classList.contains("temp")) {        
+    } else if (event.target.dataset.type === "equal" && displayCurrentOperand.textContent !== "" && displayPrevOperand.textContent !== "" && displayOperator.textContent !== "" && !displayCurrentOperand.classList.contains("temp")) {        
         displayCurrentOperand.textContent = operate(Number(displayPrevOperand.textContent), Number(displayCurrentOperand.textContent), displayOperator.dataset.operation);
         displayCurrentOperand.classList.add("temp");
         displayPrevOperand.textContent = "";
