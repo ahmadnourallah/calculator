@@ -36,14 +36,14 @@ function operate(oper1, oper2, operation) {
 }
 
 document.querySelector("#keys").addEventListener("click", event => {
-    if(event.target.tagName !== "DIV" && displayCurrentOperand.classList.contains("temp")) {
-        displayCurrentOperand.textContent = "";
-        displayCurrentOperand.classList.toggle("temp");
-    }
-
     if (event.target.dataset.type === "number" && !(event.target.textContent === "." && displayCurrentOperand.textContent.includes("."))) {
+        if (displayCurrentOperand.textContent === "0" || displayCurrentOperand.classList.contains("temp")) {
+            displayCurrentOperand.textContent = "";
+            displayCurrentOperand.classList.toggle("temp");
+        }
+        
         displayCurrentOperand.textContent += event.target.textContent;
-
+        
     } else if (event.target.dataset.type === "operator") {
         if (Number(displayPrevOperand.textContent)) {
             let result = operate(Number(displayPrevOperand.textContent), Number(displayCurrentOperand.textContent), event.target.dataset.operation);
@@ -60,11 +60,11 @@ document.querySelector("#keys").addEventListener("click", event => {
         displayOperator.textContent = event.target.textContent;
         displayOperator.dataset.operation = event.target.dataset.operation;
     
-    } else if (event.target.dataset.type === "equal" && Number(displayCurrentOperand.textContent) && Number(displayPrevOperand.textContent) && displayOperator.textContent !== "") {
+    } else if (event.target.dataset.type === "equal" && Number(displayCurrentOperand.textContent) && Number(displayPrevOperand.textContent) && displayOperator.textContent !== "" && !displayCurrentOperand.classList.contains("temp")) {        
         displayCurrentOperand.textContent = operate(Number(displayPrevOperand.textContent), Number(displayCurrentOperand.textContent), displayOperator.dataset.operation);
         displayCurrentOperand.classList.toggle("temp");
         displayPrevOperand.textContent = "";
-        displayOperator.textContent = "";
+        displayOperator.textContent = "";        
     } 
 });
 
