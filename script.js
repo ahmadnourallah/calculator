@@ -1,6 +1,6 @@
-let operator1, operator2, operator;
 const displayPrevOperand = document.querySelector("#prev-operand");
 const displayCurrentOperand = document.querySelector("#current-operand");
+const displayOperator = document.querySelector("#operator");
 
 function add(oper1, oper2) {
     return oper1 + oper2;
