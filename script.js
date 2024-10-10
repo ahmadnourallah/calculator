@@ -51,7 +51,8 @@ document.querySelector("#keys").addEventListener("click", event => {
             displayCurrentOperand.classList.toggle("temp");
         
         } else {
-            displayPrevOperand.textContent = displayCurrentOperand.textContent;
+            displayPrevOperand.textContent = displayCurrentOperand.textContent || 0;
+            displayCurrentOperand.textContent = displayCurrentOperand.textContent || 0;
             displayCurrentOperand.classList.toggle("temp");
         }
 
