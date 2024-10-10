@@ -94,7 +94,7 @@ document.querySelector("#clear-btn").addEventListener("click", () => {
     displayCurrentOperand.classList.add("temp");
 });
 
-window.addEventListener("keydown", event => {
+document.addEventListener("keydown", event => {
     if (allowedKeys.includes(event.key)) {
         document.querySelectorAll(".key").forEach(key => {
             if (key.textContent === event.key) {
@@ -108,3 +108,12 @@ window.addEventListener("keydown", event => {
         document.querySelector("#delete-btn").dispatchEvent(clickEvent);     
     }
 });
+
+document.addEventListener("paste", (event) => { 
+    let paste = Number(event.clipboardData.getData("text"));
+
+    if (paste)
+        displayCurrentOperand.textContent = paste;
+        displayCurrentOperand.classList.remove("temp");
+    }
+);
