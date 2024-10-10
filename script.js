@@ -58,7 +58,13 @@ document.querySelector("#keys").addEventListener("click", event => {
 
         displayOperator.textContent = event.target.textContent;
         displayOperator.dataset.operation = event.target.dataset.operation;
-    }
+    
+    } else if (event.target.dataset.type === "equal" && Number(displayCurrentOperand.textContent) && Number(displayPrevOperand.textContent) && displayOperator.textContent !== "") {
+        displayCurrentOperand.textContent = operate(Number(displayPrevOperand.textContent), Number(displayCurrentOperand.textContent), displayOperator.dataset.operation);
+        displayCurrentOperand.classList.toggle("temp");
+        displayPrevOperand.textContent = "";
+        displayOperator.textContent = "";
+    } 
 });
 
 document.querySelector("#delete-btn").addEventListener("click", event => {
