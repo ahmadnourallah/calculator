@@ -35,7 +35,7 @@ function operate(oper1, oper2, operation) {
 }
 
 document.querySelector("#keys").addEventListener("click", event => {
-    if(displayCurrentOperand.classList.contains("temp")) {
+    if(event.target.tagName !== "DIV" && displayCurrentOperand.classList.contains("temp")) {
         displayCurrentOperand.textContent = "";
         displayCurrentOperand.classList.toggle("temp");
     }
