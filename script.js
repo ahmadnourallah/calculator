@@ -94,7 +94,7 @@ document.querySelector("#clear-btn").addEventListener("click", () => {
     displayCurrentOperand.classList.add("temp");
 });
 
-document.addEventListener("keypress", event => {
+window.addEventListener("keydown", event => {
     if (allowedKeys.includes(event.key)) {
         document.querySelectorAll(".key").forEach(key => {
             if (key.textContent === event.key) {
@@ -102,5 +102,9 @@ document.addEventListener("keypress", event => {
                 key.dispatchEvent(clickEvent);
             }
         });        
+    
+    } else if (event.key === "Backspace" || event.key === "Delete") {
+        let clickEvent = new Event('click');
+        document.querySelector("#delete-btn").dispatchEvent(clickEvent);     
     }
 });
