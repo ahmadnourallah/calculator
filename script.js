@@ -37,6 +37,7 @@ function operate(oper1, oper2, operation) {
 
 document.querySelector("#keys").addEventListener("click", event => {
     if (event.target.dataset.type === "number" && !(event.target.textContent === "." && displayCurrentOperand.textContent.includes("."))) {
+        // Remove temporary numbers whenever a new number is entered
         if (displayCurrentOperand.textContent === "0" || displayCurrentOperand.classList.contains("temp")) {
             displayCurrentOperand.textContent = "";
             displayCurrentOperand.classList.toggle("temp");
@@ -45,6 +46,7 @@ document.querySelector("#keys").addEventListener("click", event => {
         displayCurrentOperand.textContent += event.target.textContent;
         
     } else if (event.target.dataset.type === "operator") {
+        // Don't perform the same operation on a temporary number
         if (!displayCurrentOperand.classList.contains("temp")) {
             if (Number(displayPrevOperand.textContent)) {
                 let result = operate(Number(displayPrevOperand.textContent), Number(displayCurrentOperand.textContent), event.target.dataset.operation);
@@ -52,6 +54,7 @@ document.querySelector("#keys").addEventListener("click", event => {
                 displayPrevOperand.textContent = result;
                 displayCurrentOperand.classList.toggle("temp");
             
+            // If no previous operand, make the current one (or a zero in case of temporary zero)  
             } else {
                 displayPrevOperand.textContent = displayCurrentOperand.textContent || 0;
                 displayCurrentOperand.textContent = displayCurrentOperand.textContent || 0;
@@ -75,6 +78,7 @@ document.querySelector("#keys").addEventListener("click", event => {
 document.querySelector("#delete-btn").addEventListener("click", event => {
     displayCurrentOperand.textContent = displayCurrentOperand.textContent.slice(0, -1);
     
+    // Add a temporary zero in case everything's deleted
     if (displayCurrentOperand.textContent === "") {
         displayCurrentOperand.textContent = "0";
         displayCurrentOperand.classList.add("temp");
