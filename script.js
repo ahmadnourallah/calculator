@@ -1,35 +1,35 @@
-let oper1, oper2, operation;
-const displayPrevOperand = document.querySelector("#prev-operand");
-const displayCurrentOperand = document.querySelector("#current-operand");
+let oper1, oper2, operator;
+const displayPrevOperand = document.querySelector("#prev-operator");
+const displayCurrentOperand = document.querySelector("#current-operator");
 
-function add(operand1, operand2) {
-    return operand1 + operand2;
+function add(oper1, oper2) {
+    return oper1 + oper2;
 }
 
-function subtract(operand1, operand2) {
-    return operand1 - operand2;
+function subtract(oper1, oper2) {
+    return oper1 - oper2;
 }
 
-function multiply(operand1, operand2) {
-    return operand1 * operand2;
+function multiply(oper1, oper2) {
+    return oper1 * oper2;
 }
 
-function divide(operand1, operand2) {
-    return operand1 / operand2;
+function divide(oper1, oper2) {
+    return oper1 / oper2;
 }
 
-function operator(operand1, operand2, operator) {
-    if (operator === "add") {
-        return add(operand1, operand2);
+function operator(oper1, oper2, operation) {
+    if (operation === "add") {
+        return add(oper1, oper2);
     
-    } else if (operator === "subtract") {
-        return subtract(operand1, operand2);
+    } else if (operation === "subtract") {
+        return subtract(oper1, oper2);
     
-    } else if (operator === "multiply") {
-        return multiply(operand1, operand2);
+    } else if (operation === "multiply") {
+        return multiply(oper1, oper2);
 
-    } else if (operator === "divide") {
-        return divide(operand1, operand2);
+    } else if (operation === "divide") {
+        return divide(oper1, oper2);
 
     }
 }
