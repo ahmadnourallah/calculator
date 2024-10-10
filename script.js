@@ -35,7 +35,7 @@ function operate(oper1, oper2, operation) {
 }
 
 document.querySelector("#keys").addEventListener("click", event => {
-    if (event.target.classList.contains("number-btn") && !(event.target.textContent === "." && displayCurrentOperand.textContent.includes("."))) {
+    if (event.target.dataset.type === "number" && !(event.target.textContent === "." && displayCurrentOperand.textContent.includes("."))) {
         displayCurrentOperand.textContent += event.target.textContent;
 
     }
