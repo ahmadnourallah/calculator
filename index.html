@@ -15,7 +15,7 @@
                 <span id="operator"></span>
             </div>
             <div id="lower-display">
-                <span id="current-operand"></span>
+                <span id="current-operand" class="temp">0</span>
             </div>
         </div>
 
@@ -38,13 +38,13 @@
 
             <div id="column-b">
                 <button id="9-btn" class="light-border" data-type="number">9</button>
-                <button id="division-btn" class="light-border">÷</button>
+                <button id="division-btn" class="light-border" data-type="operator" data-operation="divide">÷</button>
                 <button id="6-btn" class="light-border" data-type="number">6</button>
-                <button id="multiplication-btn" class="light-border">×</button>
+                <button id="multiplication-btn" class="light-border" data-type="operator" data-operation="multiply">×</button>
                 <button id="3-btn" class="light-border" data-type="number">3</button>
-                <button id="minus-btn" class="light-border">-</button>
+                <button id="minus-btn" class="light-border" data-type="operator" data-operation="subtract">-</button>
                 <button id="equality-btn" class="light-border">=</button>
-                <button id="addition-btn" class="light-border">+</button>                
+                <button id="addition-btn" class="light-border" data-type="operator" data-operation="add">+</button>                
             </div>
         </div>
     </div>

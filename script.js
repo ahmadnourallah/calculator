@@ -35,9 +35,27 @@ function operate(oper1, oper2, operation) {
 }
 
 document.querySelector("#keys").addEventListener("click", event => {
+    if(displayCurrentOperand.classList.contains("temp")) {
+        displayCurrentOperand.textContent = "";
+        displayCurrentOperand.classList.toggle("temp");
+    }
+
     if (event.target.dataset.type === "number" && !(event.target.textContent === "." && displayCurrentOperand.textContent.includes("."))) {
         displayCurrentOperand.textContent += event.target.textContent;
 
+    } else if (event.target.dataset.type === "operator") {
+        if (Number(displayPrevOperand.textContent)) {
+            let result = operate(Number(displayPrevOperand.textContent), Number(displayCurrentOperand.textContent), event.target.dataset.operation);
+            displayCurrentOperand.textContent = result;
+            displayPrevOperand.textContent = result;
+            displayCurrentOperand.classList.toggle("temp");
+        
+        } else {
+            displayPrevOperand.textContent = displayCurrentOperand.textContent;
+            displayCurrentOperand.classList.toggle("temp");
+        }
+
+        displayOperator.textContent = event.target.textContent;
     }
 });
 
