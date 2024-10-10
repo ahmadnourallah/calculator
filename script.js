@@ -61,4 +61,11 @@ document.querySelector("#keys").addEventListener("click", event => {
 
 document.querySelector("#delete-btn").addEventListener("click", event => {
     displayCurrentOperand.textContent = displayCurrentOperand.textContent.slice(0, -1);
-})
+});
+
+document.querySelector("#clear-btn").addEventListener("click", () => {
+    displayOperator.textContent = "";
+    displayPrevOperand.textContent = "";
+    displayCurrentOperand.textContent = "0";
+    displayCurrentOperand.classList.add("temp");
+});
