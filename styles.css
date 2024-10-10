@@ -55,11 +55,11 @@ button:hover {
     overflow-wrap: anywhere;
 }
 
-#cal-container #display #prev-operand {
+#cal-container #display #upper-display {
     font-size: 20px;
 }
 
-#cal-container #display #current-operand {
+#cal-container #display #lower-display {
     font-size: 45px;
     font-weight: 500;   
 }
